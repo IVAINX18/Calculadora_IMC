@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora IMC Elegante</title>
+    <script src="script.js" defer></script> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="form-container">
+            <div class="form-header">
+                <div class="circle-decoration"></div>
+                <h2>Calculadora de IMC</h2>
+                <p class="subtitle">Índice de Masa Corporal</p>
+            </div>
+            <form id="imc-form" action="calcular_imc.php" method="post" novalidate>
+                <div class="input-group">
+                    <input type="text" id="nombre" name="nombre" required>
+                    <label for="nombre">Nombre</label>
+                    <span class="input-highlight"></span>
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" id="apellido" name="apellido" required>
+                    <label for="apellido">Apellido</label>
+                    <span class="input-highlight"></span>
+                </div>
+                
+                <div class="input-group">
+                    <input type="tel" id="telefono" name="telefono" required>
+                    <label for="telefono">Teléfono</label>
+                    <span class="input-highlight"></span>
+                </div>
+                
+                <div class="measurements-container">
+                    <div class="input-group half">
+                        <input type="number" id="peso" name="peso" step="0.1" required>
+                        <label for="peso">Peso (kg)</label>
+                        <span class="input-highlight"></span>
+                    </div>
+                    
+                    <div class="input-group half">
+                        <input type="number" id="estatura" name="estatura" step="0.01" required>
+                        <label for="estatura">Estatura (m)</label>
+                        <span class="input-highlight"></span>
+                    </div>
+                </div>
+
+                <div id="error-message" class="error"></div>
+                
+                <button type="submit">
+                    <span class="button-text">Calcular</span>
+                    <span class="button-icon">→</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
