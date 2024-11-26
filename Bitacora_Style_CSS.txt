@@ -74,3 +74,4 @@ input:not(:placeholder-shown) ~ label {
     color: var(--primary-color);
     font-weight: 500;
 }
+-------------------------------------------------------------------------------------
