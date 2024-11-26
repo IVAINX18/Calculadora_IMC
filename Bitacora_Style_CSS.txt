@@ -1,0 +1,76 @@
+Bitácora de Cambios y Documentación
+Descripción del archivo:
+Este archivo CSS define el diseño visual del proyecto "Calculadora de IMC Elegante", aplicando una estética moderna, efectos de animación, interactividad con el usuario y diseño responsivo.
+
+Cambios realizados
+Definición de variables CSS:
+
+Se usaron variables con :root para definir colores, fondos, y estilos comunes que permiten una personalización fácil:
+
+css:
+--primary-color, --secondary-color, --accent-color, --background-color, --text-color, etc.
+
+Facilitan la implementación de un esquema de colores cohesivo.
+Estilos globales y reseteo:
+
+Uso de * para unificar márgenes, rellenos y establecer el modelo de caja (box-sizing: border-box).
+Definición de la fuente principal: 'Segoe UI', system-ui.
+Diseño del cuerpo (body):
+
+Aplicación de un fondo con gradiente y un efecto pulsante animado (@keyframes pulse).
+Diseño centrado usando flexbox.
+Estructura del contenedor principal:
+
+Estilo del contenedor .page-container con una perspectiva 3D para darle un efecto dinámico.
+Contenedor del formulario (.form-container):
+
+Fondo semitransparente, bordes redondeados, sombra y animaciones de transformación.
+Decoración de encabezado con un círculo animado.
+Interactividad en los elementos del formulario:
+
+Inputs con efectos al enfocar (:focus) que incluyen cambios en color de borde, sombra, y etiquetas flotantes.
+Animaciones en botones:
+Hover con sombras, transformaciones y gradiente dinámico.
+Iconos interactivos con movimiento al pasar el cursor.
+Validación visual de errores:
+
+Estilo para mensajes de error (.error) con transiciones de opacidad, colores de advertencia y bordes redondeados.
+Diseño responsivo:
+
+Ajustes para dispositivos pequeños (@media (max-width: 480px)):
+Reducción de rellenos y reorganización de los grupos de entrada.
+Animaciones clave:
+
+Pulse: Fondo animado con una transición suave.
+Spin: Animación para íconos de carga en el botón.
+
+Fragmento modificado/agregado
+
+Ejemplo de interacción dinámica:
+
+css:
+input:focus {
+    border-color: var(--primary-color);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(126, 87, 194, 0.1);
+}
+
+label {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: #757575;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label {
+    top: -0.5rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+    background: white;
+    color: var(--primary-color);
+    font-weight: 500;
+}

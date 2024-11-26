@@ -1,0 +1,79 @@
+Bitácora de Cambios y Documentación
+Descripción del archivo:
+Archivo JavaScript (script.js) que controla la validación de un formulario para calcular el IMC, añade interacciones dinámicas y efectos visuales, y simula un proceso de envío con animación en el botón de acción.
+
+Cambios realizados
+Inicialización del DOM:
+
+Uso de DOMContentLoaded para asegurar que el script se ejecute solo después de cargar completamente el DOM.
+Funciones de validación:
+
+Validación de teléfono:
+Se creó la función isValidPhone que valida el formato de un número telefónico mediante una expresión regular.
+Validación de números:
+La función isValidNumber comprueba que un valor sea numérico y mayor a 0.
+Interacción del botón de envío:
+
+Función setLoadingState para cambiar dinámicamente el texto, ícono y estado del botón de envío según el estado de carga.
+Validaciones del formulario:
+
+Se verifica que todos los campos tengan valores válidos antes de enviar el formulario.
+Los errores se muestran en el elemento #error-message en caso de campos incompletos o inválidos.
+Simulación de red y envío:
+
+Se añadió un retraso simulado (setTimeout) de 800ms antes de enviar el formulario para dar la sensación de procesamiento.
+Efectos visuales dinámicos:
+
+Inputs:
+Placeholder reemplazado por un diseño interactivo, con efectos de foco (focus) y desenfoque (blur), mejorando la experiencia de usuario.
+Decoración con parallax:
+Se añadió un efecto de parallax para el círculo decorativo al mover el cursor, logrando un diseño más atractivo.
+
+Fragmento modificado/agregado
+
+javascript:
+// Validación del formulario
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    errorMessage.textContent = '';
+    
+    const nombre = document.getElementById('nombre').value.trim();
+    const apellido = document.getElementById('apellido').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const peso = parseFloat(document.getElementById('peso').value);
+    const estatura = parseFloat(document.getElementById('estatura').value);
+    
+    // Validaciones
+    if (!nombre || !apellido) {
+        errorMessage.textContent = 'Por favor, ingresa tu nombre completo';
+        return;
+    }
+    
+    if (!isValidPhone(telefono)) {
+        errorMessage.textContent = 'Por favor, ingresa un número de teléfono válido';
+        return;
+    }
+    
+    if (!isValidNumber(peso)) {
+        errorMessage.textContent = 'Por favor, ingresa un peso válido';
+        return;
+    }
+    
+    if (!isValidNumber(estatura)) {
+        errorMessage.textContent = 'Por favor, ingresa una estatura válida';
+        return;
+    }
+    
+    // Si todo está correcto, enviar el formulario
+    const submitButton = form.querySelector('button[type="submit"]');
+    setLoadingState(submitButton, true);
+    
+    // Simular delay de red y enviar el formulario
+    setTimeout(() => {
+        form.submit();
+    }, 800);
+});
+Notas adicionales:
+Este script mejora significativamente la experiencia del usuario mediante interactividad, validaciones intuitivas y efectos visuales.
+La lógica está preparada para prevenir envíos de formularios con datos incorrectos.
+La funcionalidad del círculo decorativo añade una característica estética moderna.

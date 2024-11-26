@@ -1,0 +1,69 @@
+Bitácora de Cambios y Documentación
+Descripción del archivo:
+El archivo PHP procesa un formulario de cálculo del Índice de Masa Corporal (IMC). Incluye validación y sanitización de datos, cálculo matemático del IMC, categorización de resultados según rangos establecidos, y genera un HTML dinámico con los resultados estilizados.
+
+Cambios realizados
+Estructura básica del procesamiento de formulario:
+
+Se utiliza $_SERVER['REQUEST_METHOD'] para validar que la solicitud es de tipo POST.
+Sanitización de los datos enviados mediante filter_input para prevenir inyecciones o datos no válidos.
+Datos sanitizados: nombre, apellido, telefono, peso, estatura.
+Cálculo del IMC:
+
+Fórmula: IMC = peso / (estatura²).
+Inclusión de validación para evitar división por cero si la estatura no es válida ($estatura > 0).
+Clasificación del IMC y asignación de estilos:
+
+Clasificaciones basadas en rangos:
+< 18.5: Bajo peso (clase bajo-peso).
+18.5 - 24.9: Peso normal (clase peso-normal).
+25 - 29.9: Sobrepeso (clase sobrepeso).
+≥ 30: Obesidad (clase obesidad).
+Cada categoría tiene un estilo asociado en CSS.
+Generación dinámica del HTML:
+
+El HTML resultante incluye los datos ingresados por el usuario, el cálculo del IMC y su categoría correspondiente.
+El diseño utiliza un contenedor .result-container con estilos modernos, fondo claro, bordes redondeados, y responsividad.
+El color del texto de la categoría cambia según el resultado para mayor impacto visual.
+Redirección si no es POST:
+
+Si se intenta acceder al archivo directamente, se redirige al formulario inicial con header('Location: index.html').
+
+Estilización:
+
+CSS incorporado en el archivo PHP para facilitar la visualización de resultados.
+Uso de variables CSS (:root) para colores primarios, secundarios y acentuados.
+Responsividad en tamaños pequeños al centrarse en la flexibilidad de los contenedores.
+Fragmento modificado/agregado
+Cálculo y clasificación del IMC:
+
+php:
+if ($estatura > 0) {
+    $imc = $peso / ($estatura * $estatura);
+    
+    // Determinar categoría y color
+    if ($imc < 18.5) {
+        $categoria = 'Bajo peso';
+        $color_clase = 'bajo-peso';
+    } elseif ($imc < 25) {
+        $categoria = 'Peso normal';
+        $color_clase = 'peso-normal';
+    } elseif ($imc < 30) {
+        $categoria = 'Sobrepeso';
+        $color_clase = 'sobrepeso';
+    } else {
+        $categoria = 'Obesidad';
+        $color_clase = 'obesidad';
+    }
+}
+
+Generación del bloque de resultados:
+
+php:
+<div class="result-value">
+    IMC: ' . number_format($imc, 2) . '
+</div>
+
+<div class="category ' . $color_clase . '">
+    ' . htmlspecialchars($categoria) . '
+</div>
