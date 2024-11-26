@@ -1,0 +1,62 @@
+Bitácora de Cambios y Documentación
+Descripción del archivo:
+Archivo HTML correspondiente a la interfaz de una calculadora de Índice de Masa Corporal (IMC). Este archivo incluye el esqueleto principal del proyecto con integraciones a un archivo JavaScript (script.js) para la lógica y un archivo CSS (style.css) para los estilos.
+
+Cambios realizados
+Estructura básica del HTML:
+
+Se añadió la estructura básica de un documento HTML5 (<!DOCTYPE html>).
+Se definieron las etiquetas <html>, <head>, y <body> con un enfoque semántico.
+Integración de scripts y estilos:
+
+Se vinculó el archivo script.js mediante la etiqueta <script> con el atributo defer para cargarlo asincrónicamente.
+Se vinculó el archivo de estilos style.css mediante la etiqueta <link>.
+Formulario para calcular el IMC:
+
+Se implementó el formulario con campos específicos para ingresar los datos del usuario: nombre, apellido, teléfono, peso y estatura.
+Cada campo incluye etiquetas <label> para mejorar la accesibilidad y usabilidad.
+Se añadieron decoraciones visuales, como el contenedor del formulario y los estilos de los botones.
+Validación inicial:
+
+Uso del atributo required para asegurar que todos los campos sean obligatorios.
+Se establecieron formatos específicos para los campos, como step="0.1" para pesos y alturas.
+Acción y método del formulario:
+
+El formulario está configurado para enviar los datos mediante el método POST al archivo calcular_imc.php.
+
+Fragmento modificado/agregado
+
+html:
+<form id="imc-form" action="calcular_imc.php" method="post" novalidate>
+    <div class="input-group">
+        <input type="text" id="nombre" name="nombre" required>
+        <label for="nombre">Nombre</label>
+        <span class="input-highlight"></span>
+    </div>
+    
+    <div class="input-group">
+        <input type="text" id="apellido" name="apellido" required>
+        <label for="apellido">Apellido</label>
+        <span class="input-highlight"></span>
+    </div>
+    
+    <div class="input-group">
+        <input type="tel" id="telefono" name="telefono" required>
+        <label for="telefono">Teléfono</label>
+        <span class="input-highlight"></span>
+    </div>
+    
+    <div class="measurements-container">
+        <div class="input-group half">
+            <input type="number" id="peso" name="peso" step="0.1" required>
+            <label for="peso">Peso (kg)</label>
+            <span class="input-highlight"></span>
+        </div>
+        
+        <div class="input-group half">
+            <input type="number" id="estatura" name="estatura" step="0.01" required>
+            <label for="estatura">Estatura (m)</label>
+            <span class="input-highlight"></span>
+        </div>
+    </div>
+</form>
